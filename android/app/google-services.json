@@ -1,0 +1,105 @@
+{
+  "project_info": {
+    "project_number": "46055818749",
+    "project_id": "accent-next-service-app",
+    "storage_bucket": "accent-next-service-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46055818749:android:93fa6cdd1558e174440594",
+        "android_client_info": {
+          "package_name": "com.admin.accentnext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46055818749-5d8gdb2jdbqrj2ev4g8vpt0dghnho36o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.admin.accentnext",
+            "certificate_hash": "eb9a9e6cfff0f548ed601c64e6b3d437e4793294"
+          }
+        },
+        {
+          "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqCi3Y6HSc_HqJBV_1qRPK4o3c133C2UM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46055818749:android:3123a7a8c641095f440594",
+        "android_client_info": {
+          "package_name": "com.user.accentnext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqCi3Y6HSc_HqJBV_1qRPK4o3c133C2UM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46055818749:android:ab9d0ccfbb8e9326440594",
+        "android_client_info": {
+          "package_name": "com.worker.accentnext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqCi3Y6HSc_HqJBV_1qRPK4o3c133C2UM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46055818749-dvait5tvirovdc4jp4av2ktb63c1vj9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
