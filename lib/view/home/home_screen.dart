@@ -25,10 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
           servicetitle('Cleaning Services'),
           // currentWidget
           const SizedBox(height: 210, child: CleaningStream()),
-          servicetitle('Home Repairs'),
+          servicetitle('Services'),
           const SizedBox(height: 210, child: ServiceStream()),
-          // servicetitle('Washing Services'),
-          // const SizedBox(height: 210, child: WashingStream()),
+          servicetitle('Washing Services'),
+          const SizedBox(height: 210, child: WashingStream()),
         ],
       ),
     );
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget servicetitle(String text) {
     return Padding(
-      padding: EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.only(left: 15, top: 10),
       child: Text(
         text,
         style: const TextStyle(

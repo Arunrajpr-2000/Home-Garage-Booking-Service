@@ -18,7 +18,11 @@ class PaymentMethodsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
-      child: SizedBox(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
         width: 300,
         child: ListTile(
             onTap: onTap,
@@ -34,11 +38,11 @@ class PaymentMethodsTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: const Color(0xff35383F)),
             ),
-            tileColor: Colors.grey[200],
+            tileColor: Colors.transparent,
             title: Text(
               '$title',
               style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.w400,
                   fontSize: 17),
             ),

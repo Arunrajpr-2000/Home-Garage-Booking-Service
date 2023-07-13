@@ -65,7 +65,7 @@ class TextfieldContainer extends StatelessWidget {
             hintText: hinttext,
             hintStyle: TextStyle(
               fontSize: 14,
-              color: Colors.white,
+              color: Colors.white38,
             ),
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:accent_service_app/common/const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PageViewWidget extends StatefulWidget {
   const PageViewWidget({
@@ -47,12 +48,12 @@ class _PageViewWidgetState extends State<PageViewWidget> {
           stream: FirebaseFirestore.instance.collection('banner').snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20.0, top: 10),
+                    child: Text(
                       'Special Offers',
                       style: TextStyle(
                         fontFamily: "poppinz",
@@ -61,49 +62,52 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    k10height,
-                    SizedBox(
-                      height: 150,
-                      child: PageView.builder(
-                        controller: _pageController,
-                        itemCount: snapshot.data!.docs.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          QueryDocumentSnapshot documentSnapshot =
-                              snapshot.data!.docs[index];
-                          return Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(documentSnapshot['img']),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
+                  ),
+                  k10height,
+                  SizedBox(
+                    height: 150,
+                    child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: snapshot.data!.docs.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        QueryDocumentSnapshot documentSnapshot =
+                            snapshot.data!.docs[index];
+                        return Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(documentSnapshot['img']),
                             ),
-                          );
-                        },
+                            //borderRadius: BorderRadius.circular(15),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  k10height,
+                  Center(
+                    child: DotsIndicator(
+                      dotsCount: snapshot.data!.docs.length,
+                      position: _currentPage,
+                      decorator: DotsDecorator(
+                        size: const Size.square(9.0),
+                        activeSize: const Size(18.0, 9.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        color: Colors.grey, // Inactive color
+                        activeColor: Colors.white,
                       ),
                     ),
-                    k10height,
-                    Center(
-                      child: DotsIndicator(
-                        dotsCount: snapshot.data!.docs.length,
-                        position: _currentPage,
-                        decorator: DotsDecorator(
-                          size: const Size.square(9.0),
-                          activeSize: const Size(18.0, 9.0),
-                          activeShape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0)),
-                          color: Colors.grey, // Inactive color
-                          activeColor: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               );
             } else {
               return const Center(
-                child: Text('No Banners'),
+                child: SpinKitFadingCircle(
+                  color: Colors.white, // Customize the color of the spinner
+                  size: 50.0, // Customize the size of the spinner
+                ),
               );
             }
           },

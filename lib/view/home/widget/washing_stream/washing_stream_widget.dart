@@ -24,9 +24,11 @@ class WashingStream extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<ServiceModel> washinglist = snapshot.data!;
-            return serviceCardWidget(
-              list: washinglist,
-              onTap: () {},
+            return Center(
+              child: serviceCardWidget(
+                list: washinglist,
+                onTap: () {},
+              ),
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(

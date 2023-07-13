@@ -191,6 +191,14 @@ Future<List<QueryDocumentSnapshot>> searchMultipleCollections(
       .get();
   results.addAll(serviceSnapshot.docs);
 
+  QuerySnapshot washingSnapshot = await firestore
+      .collection('categories')
+      .doc('categories')
+      .collection('Washing')
+      .where('specificservicename', isGreaterThanOrEqualTo: query)
+      .get();
+  results.addAll(washingSnapshot.docs);
+
   // Sort the results based on relevance to the search query
   results.sort((a, b) {
     Map<String, dynamic>? dataA = a.data() as Map<String, dynamic>?;

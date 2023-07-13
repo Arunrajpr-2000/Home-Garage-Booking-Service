@@ -5,7 +5,6 @@ import 'package:accent_service_app/common/snackbar.dart';
 import 'package:accent_service_app/function/addaddress_fun.dart';
 import 'package:accent_service_app/function/image_fun.dart';
 import 'package:accent_service_app/model/profile_model.dart';
-import 'package:accent_service_app/view/main_page/main_page.dart';
 import 'package:accent_service_app/view/menu_screen/menu_screen.dart';
 import 'package:accent_service_app/view/payment_screen/widget/textfield_container.dart';
 import 'package:flutter/material.dart';
@@ -113,38 +112,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 TextfieldContainer(
                   controller: _usernameController,
                   leadingIcon: Icon(Icons.person, color: Colors.white),
+                  hinttext: 'Enter UserName',
                 ),
                 k20height,
                 TextfieldContainer(
                   keyboardType: TextInputType.emailAddress,
                   controller: _emailController,
                   leadingIcon: Icon(Icons.email, color: Colors.white),
+                  hinttext: 'Enter Email',
                 ),
                 k20height,
                 TextfieldContainer(
                   controller: _streetController,
                   leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  hinttext: 'Enter Street',
                 ),
                 k20height,
                 TextfieldContainer(
                   controller: _cityController,
                   leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  hinttext: 'Enter City/District',
                 ),
                 k20height,
                 TextfieldContainer(
                   controller: _stateController,
                   leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  hinttext: 'Enter state',
                 ),
                 k20height,
                 TextfieldContainer(
                   keyboardType: TextInputType.phone,
                   controller: _postalController,
                   leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  hinttext: 'Enter Postal code',
                 ),
                 k20height,
                 TextfieldContainer(
                   controller: _nearbyController,
                   leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  hinttext: 'Enter Nearby location',
                 ),
                 k30height,
                 Padding(

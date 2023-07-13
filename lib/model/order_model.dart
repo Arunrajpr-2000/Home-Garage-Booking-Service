@@ -12,6 +12,13 @@ class OrderModel {
   final String? username;
   final String? nearby;
   final String? userimg;
+  final bool ispending;
+  final bool isaccepted;
+  final bool isworkstarted;
+  String availabledate;
+  String availabletime;
+  String estimatedetails;
+
   OrderModel({
     required this.mainservicename,
     required this.specificservicename,
@@ -26,6 +33,12 @@ class OrderModel {
     this.username,
     this.nearby,
     this.userimg,
+    required this.ispending,
+    required this.isaccepted,
+    required this.isworkstarted,
+    required this.availabledate,
+    required this.availabletime,
+    required this.estimatedetails,
   });
 
   Map<String, dynamic> toJson() => {
@@ -41,7 +54,13 @@ class OrderModel {
         'userphonenumber': userphonenumber,
         'username': username,
         'nearby': nearby,
-        'userimg': userimg
+        'userimg': userimg,
+        'ispending': ispending,
+        'isaccepted': isaccepted,
+        'isworkstarted': isworkstarted,
+        'availabledate': availabledate,
+        'availabletime': availabletime,
+        'estimatedetails': estimatedetails
       };
 
   static OrderModel fromJson(Map<String, dynamic> json) => OrderModel(
@@ -57,6 +76,12 @@ class OrderModel {
         userphonenumber: json['userphonenumber'],
         username: json['username'],
         nearby: json['nearby'],
+        ispending: json['ispending'],
         userimg: json['userimg'],
+        isaccepted: json['isaccepted'],
+        isworkstarted: json['isworkstarted'],
+        availabledate: json['availabledate'],
+        availabletime: json['availabletime'],
+        estimatedetails: json['estimatedetails'],
       );
 }

@@ -47,11 +47,11 @@ class ChoosePriceWidget extends StatelessWidget {
                       color: Colors.grey,
                       fontSize: 13,
                     ),
-                    maxLines: 2,
+                    maxLines: 3,
                     textAlign: TextAlign.left),
               ),
               kheight20,
-              Text('₹ $price  Onwards',
+              Text('₹ $price Onwards',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,

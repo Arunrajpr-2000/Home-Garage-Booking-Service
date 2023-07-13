@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/model/order_model.dart';
+import 'package:accent_service_app/view/booking_status/widget/timeline.dart';
 import 'package:accent_service_app/view/menu_screen/menu_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
@@ -35,7 +35,7 @@ class UpcomingOrder extends StatelessWidget {
                     DateTime now = DateTime.parse(orderlist[index].datetime);
                     String formattedDate =
                         DateFormat('dd MMMM yyyy').format(now);
-                    // String timeformat = DateFormat("hh:mm:ss a").format(now);
+                    String timeformat = DateFormat("hh:mm:ss a").format(now);
                     log(formattedDate);
                     //log(timeformat);
                     return Padding(
@@ -63,6 +63,24 @@ class UpcomingOrder extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  const Text(
+                                    "Date & Time",
+                                    style: TextStyle(
+                                      fontFamily: "poppinz",
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$formattedDate\n$timeformat",
+                                    style: const TextStyle(
+                                      fontFamily: "poppinz",
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    maxLines: 2,
+                                  ),
                                   k10height,
                                   const Text(
                                     "Service",
@@ -127,53 +145,47 @@ class UpcomingOrder extends StatelessWidget {
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(right: 20),
+                                padding:
+                                    const EdgeInsets.only(right: 10, left: 10),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.blue[100],
+                                    color: Colors.black,
                                   ),
-                                  height: 120,
-                                  width: 100,
+                                  height: 200,
+                                  width: 130,
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          formattedDate.substring(0, 2),
-                                          style: const TextStyle(
-                                            fontFamily: "poppinz",
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        // const SizedBox(height: 5),
-                                        Text(
-                                          formattedDate.substring(
-                                              2, formattedDate.length - 4),
-                                          style: const TextStyle(
-                                            fontFamily: "poppinz",
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        // SizedBox(height: 5),
-                                        Text(
-                                          formattedDate.substring(
-                                              formattedDate.length - 4),
-                                          style: const TextStyle(
-                                            fontFamily: "poppinz",
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: TimelineTileDemo(
+                                        orderModel: OrderModel(
+                                            availabledate:
+                                                orderlist[index].availabledate,
+                                            availabletime:
+                                                orderlist[index].availabletime,
+                                            estimatedetails: orderlist[index]
+                                                .estimatedetails,
+                                            mainservicename: orderlist[index]
+                                                .mainservicename,
+                                            specificservicename:
+                                                orderlist[index]
+                                                    .specificservicename,
+                                            price: orderlist[index].price,
+                                            orderid: orderlist[index].orderid,
+                                            isDelivered:
+                                                orderlist[index].isDelivered,
+                                            isCanceled:
+                                                orderlist[index].isCanceled,
+                                            datetime: orderlist[index].datetime,
+                                            paymentmethod:
+                                                orderlist[index].paymentmethod,
+                                            userphonenumber: orderlist[index]
+                                                .userphonenumber,
+                                            ispending:
+                                                orderlist[index].ispending,
+                                            isaccepted:
+                                                orderlist[index].isaccepted,
+                                            isworkstarted: orderlist[index]
+                                                .isworkstarted)),
                                   ),
                                 ),
                               ),

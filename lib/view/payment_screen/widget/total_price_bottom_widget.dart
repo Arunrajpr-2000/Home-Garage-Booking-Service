@@ -20,7 +20,7 @@ class TotalPriceBottomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 150,
-      width: 360,
+      width: double.infinity,
       decoration: const BoxDecoration(
           // Color(0xff35383F)
           color: Color(0xff35383F),

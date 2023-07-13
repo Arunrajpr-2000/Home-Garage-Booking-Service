@@ -1,6 +1,7 @@
 import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/model/order_model.dart';
 import 'package:accent_service_app/model/service_model.dart';
+import 'package:accent_service_app/view/choose_booking_time/choose_booking_time.dart';
 import 'package:accent_service_app/view/payment_screen/payment_screen.dart';
 import 'package:accent_service_app/view/service_details/pricewidget.dart';
 import 'package:flutter/material.dart';
@@ -154,31 +155,34 @@ class ServiceDetailScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10))),
                       onPressed: () {
-                        Get.to(PaymentScreen(
-                            serviceModel: ServiceModel(
-                                mainservicename: serviceModel.mainservicename,
-                                specificservicename:
-                                    serviceModel.specificservicename,
-                                price: serviceModel.price,
-                                backgroundImg: serviceModel.backgroundImg,
-                                description: serviceModel.description,
-                                imgsubheading: serviceModel.imgsubheading)
-                            // OrderModel(
+                        Get.to(BookingDateTime(
+                          serviceModel: serviceModel,
+                        ));
+                        // Get.to(PaymentScreen(
+                        //     serviceModel: ServiceModel(
+                        //         mainservicename: serviceModel.mainservicename,
+                        //         specificservicename:
+                        //             serviceModel.specificservicename,
+                        //         price: serviceModel.price,
+                        //         backgroundImg: serviceModel.backgroundImg,
+                        //         description: serviceModel.description,
+                        //         imgsubheading: serviceModel.imgsubheading)
+                        //     // OrderModel(
 
-                            // mainservicename: serviceModel.mainservicename,
-                            // specificservicename:
-                            //     serviceModel.specificservicename,
-                            // price: serviceModel.price,
-                            // orderid: randomAlphaNumeric(8),
-                            // isDelivered: false,
-                            // isCanceled: false,
-                            // datetime: DateTime.now().toString(),
-                            // paymentmethod: ,
-                            // userphonenumber: userphonenumber),
-                            ));
+                        //     // mainservicename: serviceModel.mainservicename,
+                        //     // specificservicename:
+                        //     //     serviceModel.specificservicename,
+                        //     // price: serviceModel.price,
+                        //     // orderid: randomAlphaNumeric(8),
+                        //     // isDelivered: false,
+                        //     // isCanceled: false,
+                        //     // datetime: DateTime.now().toString(),
+                        //     // paymentmethod: ,
+                        //     // userphonenumber: userphonenumber),
+                        //     ));
                       },
                       child: Text(
-                        'Add order',
+                        'Add Details Of your service',
                         style: TextStyle(
                           color: Colors.white,
                         ),

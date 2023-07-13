@@ -49,7 +49,7 @@ class serviceCardWidget extends StatelessWidget {
                 children: [
                   Container(
                       padding: EdgeInsets.only(top: 15, left: 10, right: 10),
-                      height: 250,
+                      height: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           // image: DecorationImage(
@@ -87,41 +87,41 @@ class serviceCardWidget extends StatelessWidget {
                             ),
                           ),
                           // k10height,
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "₹${percentprice.toStringAsFixed(2)}",
-                                style: TextStyle(
-                                    fontFamily: 'poppinz',
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                " incl. GST",
-                                style: TextStyle(
-                                    fontFamily: 'poppinz',
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.grey,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisSize: MainAxisSize.min,
+                          //   children: [
+                          // Text(
+                          //   "From ₹ 250",
+                          //   //  ${percentprice.toStringAsFixed(2)}",
+                          //   style: TextStyle(
+                          //       fontFamily: 'poppinz',
+                          //       overflow: TextOverflow.ellipsis,
+                          //       color: Colors.white,
+                          //       fontSize: 15,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
+                          //     // Text(
+                          //     //   " incl. GST",
+                          //     //   style: TextStyle(
+                          //     //       fontFamily: 'poppinz',
+                          //     //       overflow: TextOverflow.ellipsis,
+                          //     //       color: Colors.grey,
+                          //     //       fontSize: 12,
+                          //     //       fontWeight: FontWeight.bold),
+                          //     // ),
+                          //   ],
+                          // ),
                           //k10height,
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "MRP: ₹ ${list[index].price}",
+                              "From ₹ ${list[index].price}",
+                              //  ${percentprice.toStringAsFixed(2)}",
                               style: TextStyle(
                                   fontFamily: 'poppinz',
                                   overflow: TextOverflow.ellipsis,
-                                  decoration: TextDecoration.lineThrough,
-                                  decorationColor: Colors.grey,
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -129,7 +129,7 @@ class serviceCardWidget extends StatelessWidget {
                       )),
                   Positioned(
                       top: 0,
-                      left: 0,
+                      left: 2,
                       child: CircleAvatar(
                         child: Text(
                           '20%',

@@ -13,6 +13,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final currentuser = FirebaseAuth.instance.currentUser!.phoneNumber;
@@ -26,7 +27,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
 // Assuming you have a user collection in Firestore and a document for each user
-  String username = "@UserName";
+  String? username;
 
   String? phonenumber;
   String? imgurl;
@@ -127,7 +128,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   radius: 70,
                 ),
                 Text(
-                  username,
+                  username ?? "Update UserName",
                   style: const TextStyle(
                     fontFamily: "poppinz",
                     color: Colors.white,
@@ -154,15 +155,13 @@ class _MenuScreenState extends State<MenuScreen> {
                       Get.to(ProfileScreen(
                           profileModel: ProfileModel(
                               phonenumber: currentuser.toString(),
-                              cityordistrict: city ?? 'Enter City/District',
-                              email: email ?? 'Enter Email',
-                              nearby: nearby ?? 'Enter Near by location',
-                              postalcode: postal ?? 'Enter Postal Code',
-                              state: state ?? 'Enter state',
-                              street: street ?? 'Enter street',
-                              username: username == "@UserName"
-                                  ? 'Enter UserName'
-                                  : username,
+                              cityordistrict: city ?? '',
+                              email: email ?? '',
+                              nearby: nearby ?? '',
+                              postalcode: postal ?? '',
+                              state: state ?? '',
+                              street: street ?? '',
+                              username: username ?? '',
                               image: imgurl)));
                     },
                     child: const Text(
@@ -231,14 +230,14 @@ class _MenuScreenState extends State<MenuScreen> {
                       await whatsAppchat(context);
                     },
                     icon: Container(
-                      height: 40,
-                      width: 40,
+                      height: 30,
+                      width: 30,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
                           image: DecorationImage(
                               image: NetworkImage(
-                                'https://cdn-icons-png.flaticon.com/512/124/124034.png?w=360',
+                                'https://www.citypng.com/public/uploads/preview/-4160105712099lwwzdy5k.png',
                               ),
                               fit: BoxFit.cover)),
                     ),
@@ -264,7 +263,8 @@ class _MenuScreenState extends State<MenuScreen> {
                 k10height,
                 MenuTileWidget(
                     onTap: () {
-                      log('help');
+                      Share.share(
+                          'hey! check out this new Service Providing app by Accent Next Techologies❤️‍🔥  \n https://play.google.com/store/apps/details?id=com.user.accentnext');
                     },
                     iconData: Icons.share_rounded,
                     title: 'Invite Friends'),
