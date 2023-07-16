@@ -1,12 +1,12 @@
 class ServiceModel {
   final String mainservicename;
   final String specificservicename;
-
   final String price;
   final String backgroundImg;
   final String imgsubheading;
   final String? cartImg;
   final String description;
+  int? discount;
 
   ServiceModel({
     required this.mainservicename,
@@ -14,6 +14,7 @@ class ServiceModel {
     required this.price,
     required this.backgroundImg,
     this.cartImg,
+    required this.discount,
     required this.description,
     required this.imgsubheading,
   });
@@ -25,6 +26,7 @@ class ServiceModel {
         'cartImg': cartImg,
         'imgsubheading': imgsubheading,
         'description': description,
+        'discount': discount
       };
 
   static ServiceModel fromJson(Map<String, dynamic> json) => ServiceModel(
@@ -35,5 +37,6 @@ class ServiceModel {
         mainservicename: json['mainservicename'],
         price: json['price'],
         specificservicename: json['specificservicename'],
+        discount: json['discount'],
       );
 }

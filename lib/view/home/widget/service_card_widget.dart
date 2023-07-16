@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/model/service_model.dart';
 import 'package:accent_service_app/view/service_details/service_details.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +37,8 @@ class serviceCardWidget extends StatelessWidget {
                 log(list[index].specificservicename);
                 Get.to(ServiceDetailScreen(
                     serviceModel: ServiceModel(
+                        discount: list[index].discount,
+                        cartImg: list[index].cartImg,
                         mainservicename: list[index].mainservicename,
                         specificservicename: list[index].specificservicename,
                         price: list[index].price,
@@ -132,7 +133,7 @@ class serviceCardWidget extends StatelessWidget {
                       left: 2,
                       child: CircleAvatar(
                         child: Text(
-                          '20%',
+                          '${list[index].discount}%',
                           style: TextStyle(color: Colors.white),
                         ),
                         backgroundColor: Colors.red,

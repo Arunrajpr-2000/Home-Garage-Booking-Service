@@ -122,14 +122,15 @@ class _SearchScreenState extends State<SearchScreen> {
                             String price = data['price'] as String;
                             String backgroundImg =
                                 data['backgroundImg'] as String;
-
                             String description = data['description'] as String;
+                            int discount = data['discount'];
                             String imgsubheading =
                                 data['imgsubheading'] as String;
                             return ListTile(
                               onTap: () {
                                 Get.to(ServiceDetailScreen(
                                     serviceModel: ServiceModel(
+                                        discount: discount,
                                         mainservicename: mainservicename,
                                         specificservicename:
                                             specificservicename,

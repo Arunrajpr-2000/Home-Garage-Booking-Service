@@ -14,32 +14,37 @@ class OrderModel {
   final String? userimg;
   final bool ispending;
   final bool isaccepted;
+  bool isadminapproved;
   final bool isworkstarted;
   String availabledate;
   String availabletime;
   String estimatedetails;
+  String? workstartimage;
+  String? workfinishimage;
 
-  OrderModel({
-    required this.mainservicename,
-    required this.specificservicename,
-    required this.price,
-    required this.orderid,
-    required this.isDelivered,
-    required this.isCanceled,
-    required this.datetime,
-    required this.paymentmethod,
-    this.address,
-    required this.userphonenumber,
-    this.username,
-    this.nearby,
-    this.userimg,
-    required this.ispending,
-    required this.isaccepted,
-    required this.isworkstarted,
-    required this.availabledate,
-    required this.availabletime,
-    required this.estimatedetails,
-  });
+  OrderModel(
+      {required this.mainservicename,
+      required this.specificservicename,
+      required this.price,
+      required this.orderid,
+      required this.isDelivered,
+      required this.isCanceled,
+      required this.datetime,
+      required this.paymentmethod,
+      this.address,
+      required this.userphonenumber,
+      this.username,
+      this.nearby,
+      this.userimg,
+      this.workfinishimage,
+      this.workstartimage,
+      required this.ispending,
+      required this.isaccepted,
+      required this.isworkstarted,
+      required this.availabledate,
+      required this.availabletime,
+      required this.estimatedetails,
+      required this.isadminapproved});
 
   Map<String, dynamic> toJson() => {
         'orderid': orderid,
@@ -60,7 +65,10 @@ class OrderModel {
         'isworkstarted': isworkstarted,
         'availabledate': availabledate,
         'availabletime': availabletime,
-        'estimatedetails': estimatedetails
+        'estimatedetails': estimatedetails,
+        'isadminapproved': isadminapproved,
+        'workfinishimage': workfinishimage,
+        'workstartimage': workstartimage
       };
 
   static OrderModel fromJson(Map<String, dynamic> json) => OrderModel(
@@ -83,5 +91,8 @@ class OrderModel {
         availabledate: json['availabledate'],
         availabletime: json['availabletime'],
         estimatedetails: json['estimatedetails'],
+        isadminapproved: json['isadminapproved'],
+        workfinishimage: json['workfinishimage'],
+        workstartimage: json['workstartimage'],
       );
 }

@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:accent_service_app/common/snackbar.dart';
 import 'package:accent_service_app/model/order_model.dart';
-import 'package:accent_service_app/model/profile_model.dart';
 import 'package:accent_service_app/view/main_page/main_page.dart';
 import 'package:accent_service_app/view/menu_screen/menu_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

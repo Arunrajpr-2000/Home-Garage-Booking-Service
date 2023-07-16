@@ -7,18 +7,24 @@ class TimelineTileDemo extends StatelessWidget {
 
   final OrderModel orderModel;
 
-  List<String> status = ['Pending', 'Accepted', 'Progress', 'Finished'];
-  List<String> statusSub = [
-    'Waiting for confirm',
-    'Accepted your booking, wait for your worker',
-    'Work in Progress',
-    'Work Finished'
+  List<String> status = [
+    'Pending',
+    'Accepted',
+    'Progress',
+    'Finished',
+    'Admin Approved'
   ];
+  // List<String> statusSub = [
+  //   'Waiting for confirm',
+  //   'Accepted your booking, wait for your worker',
+  //   'Work in Progress',
+  //   'Work Finished'
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 4,
+      itemCount: 5,
       itemBuilder: (context, index) {
         bool isCompleted = orderModel.isDelivered;
         // bool ispending = orderModel.ispending;
@@ -38,6 +44,9 @@ class TimelineTileDemo extends StatelessWidget {
           case 3:
             isCompleted = orderModel.isDelivered;
             break;
+          case 4:
+            isCompleted = orderModel.isadminapproved;
+            break;
         }
 
         return TimelineTile(
@@ -45,7 +54,7 @@ class TimelineTileDemo extends StatelessWidget {
           alignment: TimelineAlign.manual,
           lineXY: 0.1,
           isFirst: index == 0,
-          isLast: index == 3,
+          isLast: index == 4,
           beforeLineStyle:
               LineStyle(color: isCompleted ? Colors.green : Colors.grey),
           afterLineStyle:
@@ -72,6 +81,7 @@ class TimelineTileDemo extends StatelessWidget {
               child: Center(
                 child: Text(
                   status[index],
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

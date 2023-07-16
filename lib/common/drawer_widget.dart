@@ -1,5 +1,4 @@
 import 'package:accent_service_app/common/const.dart';
-import 'package:accent_service_app/common/list_tile_widget.dart';
 import 'package:accent_service_app/common/snackbar.dart';
 import 'package:accent_service_app/view/auth/login_screen.dart';
 import 'package:accent_service_app/view/menu_screen/widget/menu_tile_widget.dart';

@@ -120,6 +120,24 @@ class UpcomingOrder extends StatelessWidget {
                                   ),
                                   k10height,
                                   const Text(
+                                    "Payment Through",
+                                    style: TextStyle(
+                                      fontFamily: "poppinz",
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  const Text(
+                                    'Cash On Delivery',
+                                    style: TextStyle(
+                                      fontFamily: "poppinz",
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  k10height,
+                                  const Text(
                                     "Status",
                                     style: TextStyle(
                                       fontFamily: "poppinz",
@@ -128,16 +146,16 @@ class UpcomingOrder extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    orderlist[index].isDelivered == false
+                                    orderlist[index].isadminapproved == false
                                         ? "Incomplete"
                                         : "Completed",
                                     style: TextStyle(
                                       fontFamily: "poppinz",
                                       fontSize: 15,
-                                      color:
-                                          orderlist[index].isDelivered == false
-                                              ? Colors.red
-                                              : Colors.green,
+                                      color: orderlist[index].isadminapproved ==
+                                              false
+                                          ? Colors.red
+                                          : Colors.green,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -152,12 +170,14 @@ class UpcomingOrder extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.black,
                                   ),
-                                  height: 200,
-                                  width: 130,
+                                  height: 250,
+                                  width: 140,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10.0),
                                     child: TimelineTileDemo(
                                         orderModel: OrderModel(
+                                            isadminapproved: orderlist[index]
+                                                .isadminapproved,
                                             availabledate:
                                                 orderlist[index].availabledate,
                                             availabletime:

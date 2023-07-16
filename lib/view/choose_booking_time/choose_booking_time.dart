@@ -291,6 +291,8 @@ class _BookingDateTimeState extends State<BookingDateTime> {
                       availabletime: selectedTime!.format(context),
                       estimatedetails: detailcontroller.text,
                       serviceModel: ServiceModel(
+                        discount: widget.serviceModel.discount,
+                        cartImg: widget.serviceModel.cartImg,
                         mainservicename: widget.serviceModel.mainservicename,
                         specificservicename:
                             widget.serviceModel.specificservicename,

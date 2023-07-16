@@ -1,5 +1,7 @@
 import 'package:accent_service_app/common/const.dart';
+import 'package:accent_service_app/view/home/banner2.dart';
 import 'package:accent_service_app/view/home/widget/banners.dart';
+import 'package:accent_service_app/view/home/widget/category_widget.dart';
 import 'package:accent_service_app/view/home/widget/cleaning_stream/cleaning_stream_widget.dart';
 import 'package:accent_service_app/view/home/widget/seachbutton.dart';
 import 'package:accent_service_app/view/home/widget/service_stream/service_stream_widget.dart';
@@ -21,12 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchButton(),
-          PageViewWidget(),
+          PageViewWidget(isneedtext: true),
+          servicetitle('Categories'),
+          k10height,
+          const Center(child: SizedBox(height: 50, child: CategoryWidget())),
+          k10height,
           servicetitle('Cleaning Services'),
-          // currentWidget
           const SizedBox(height: 210, child: CleaningStream()),
           servicetitle('Services'),
           const SizedBox(height: 210, child: ServiceStream()),
+          PageViewWidget2(),
           servicetitle('Washing Services'),
           const SizedBox(height: 210, child: WashingStream()),
         ],

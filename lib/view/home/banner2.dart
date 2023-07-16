@@ -1,22 +1,22 @@
 import 'dart:async';
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:accent_service_app/common/const.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class PageViewWidget extends StatefulWidget {
-  PageViewWidget({
+class PageViewWidget2 extends StatefulWidget {
+  PageViewWidget2({
     Key? key,
-    required this.isneedtext,
   }) : super(key: key);
-  bool isneedtext;
+
   @override
-  _PageViewWidgetState createState() => _PageViewWidgetState();
+  _PageViewWidget2State createState() => _PageViewWidget2State();
 }
 
-class _PageViewWidgetState extends State<PageViewWidget> {
+class _PageViewWidget2State extends State<PageViewWidget2> {
   List<String> bannerImages = [];
   Timer? _timer;
   int _currentPage = 0;
@@ -50,7 +50,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
 
   void fetchBannerImages() async {
     final snapshot =
-        await FirebaseFirestore.instance.collection('banner').get();
+        await FirebaseFirestore.instance.collection('banner2').get();
 
     final images = snapshot.docs.map((doc) => doc['img'] as String).toList();
 
@@ -74,23 +74,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              widget.isneedtext == true
-                  ? const Padding(
-                      padding: EdgeInsets.only(left: 20.0, top: 10),
-                      child: Text(
-                        'Special Offers',
-                        style: TextStyle(
-                          fontFamily: "poppinz",
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  : SizedBox(
-                      height: 1,
-                    ),
-              k10height,
+              k20height,
               SizedBox(
                 height: 150,
                 width: double.infinity,

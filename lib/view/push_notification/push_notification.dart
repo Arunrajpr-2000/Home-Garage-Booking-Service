@@ -70,7 +70,7 @@ class NotificationScreen extends StatelessWidget {
                         tileColor: Colors.white,
                         title: Text(
                           data['title'],
-                          style: TextStyle(
+                          style:const TextStyle(
                             fontFamily: "poppinz",
                             color: Colors.white,
                             fontSize: 18,

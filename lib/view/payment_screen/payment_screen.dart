@@ -322,7 +322,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
                 k20height,
                 Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 20),
+                  padding: const EdgeInsets.only(left: 25, right: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     mainAxisSize: MainAxisSize.min,
@@ -373,9 +373,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     state: state ?? '',
                                     street: street ?? '',
                                     username: username ?? '',
-                                    //  == "@UserName"
-                                    //     ? 'Enter UserName'
-                                    //     : username,
                                     image: imgurl)));
                             // addaressAlert(context);
                           },
@@ -432,6 +429,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ispending: true,
                               isaccepted: false,
                               isworkstarted: false,
+                              isadminapproved: false,
                               mainservicename:
                                   widget.serviceModel.mainservicename,
                               specificservicename:
