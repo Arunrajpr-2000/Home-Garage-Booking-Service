@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/common/snackbar.dart';
@@ -8,15 +7,14 @@ import 'package:accent_service_app/model/profile_model.dart';
 import 'package:accent_service_app/model/service_model.dart';
 import 'package:accent_service_app/view/menu_screen/menu_screen.dart';
 import 'package:accent_service_app/view/payment_screen/widget/payment_tile_widget.dart';
-import 'package:accent_service_app/view/payment_screen/widget/textfield_container.dart';
 import 'package:accent_service_app/view/payment_screen/widget/total_price_bottom_widget.dart';
 import 'package:accent_service_app/view/profile_screen/profile_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:random_string/random_string.dart';
 
+// ignore: must_be_immutable
 class PaymentScreen extends StatefulWidget {
   PaymentScreen(
       {super.key,
@@ -241,12 +239,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               end: FractionalOffset.bottomCenter,
               colors: <Color>[
                 Color(0xff74d3d9),
-                //  Color.fromARGB(255, 77, 159, 161),
-                // Color(0xff2e2e2e),
-                // Color(0xff2e2e2e),
-                Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                // Colors.black, Colors.black
+                Color(0xff1a1b1f),
+                Color(0xff1a1b1f),
               ]),
         ),
         child: Stack(
@@ -254,59 +248,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // k20height,
-                // Container(
-                //   decoration: BoxDecoration(color: Colors.teal[50]),
-                //   width: double.infinity,
-                //   height: 50,
-                //   // color: Colors.teal[50],
-                //   child: const Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //     children: [
-                //       Text(
-                //         'Amount Payable',
-                //         style: TextStyle(
-                //             color: Colors.black,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.w400),
-                //         textAlign: TextAlign.start,
-                //       ),
-                //       Text(
-                //         '₹ 1058',
-                //         style: TextStyle(
-                //             color: Colors.black,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.w400),
-                //         textAlign: TextAlign.start,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Text(
-                //   '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - -',
-                //   textAlign: TextAlign.center,
-                //   overflow: TextOverflow.clip,
-                //   maxLines: 1,
-                //   style: TextStyle(color: Colors.grey),
-                // ),
                 k20height,
-                // PaymentMethodsTile(
-                //   onTap: () {},
-                //   imageUrl:
-                //       'https://yt3.ggpht.com/ytc/AMLnZu8hEuwIDjx39XqXih5os_s6PVzgsptnGb8Q1tkKvw=s900-c-k-c0x00ffffff-no-rj',
-                //   title: 'RazorPay',
-                //   radiobutton: Radio<int>(
-                //       activeColor: Colors.black,
-                //       fillColor: MaterialStateProperty.all(Colors.black),
-                //       value: 1,
-                //       groupValue: _value,
-                //       onChanged: (value) {
-                //         setState(() {
-                //           _value = value!;
-                //         });
-                //       }),
-                // ),
-                // k20height,
                 const Padding(
                   padding: EdgeInsets.only(left: 25),
                   child: Text(
@@ -341,8 +283,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ),
                       // kwidth20,
                       Container(
-                        padding: EdgeInsets.only(left: 15),
-                        width: 200,
+                        padding: const EdgeInsets.only(left: 15),
+                        width: 180,
                         child: Text(
                           street == null ||
                                   city == null ||
@@ -374,9 +316,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     street: street ?? '',
                                     username: username ?? '',
                                     image: imgurl)));
-                            // addaressAlert(context);
                           },
-                          icon: CircleAvatar(
+                          icon: const CircleAvatar(
                             radius: 20,
                             child: Icon(
                               Icons.edit,
@@ -421,7 +362,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ? Utils.showSnackBar(
                           context: context, text: 'Please Fill address')
                       : await addOrderFun(
-                          context: context,
                           orderModel: OrderModel(
                               availabledate: widget.availabledate,
                               availabletime: widget.availabletime,
@@ -445,26 +385,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               nearby: nearby,
                               username: username,
                               userimg: imgurl));
-
-                  // cashonDelivery(context);
-                  // if (_value == 1) {
-                  //   razorpay.open(options);
-                  // } else {
-                  //   addorder(
-                  //       orderModel: OrderedProduct(
-                  //     cartprice: widget.product.price * 1,
-                  //     description: widget.product.description,
-                  //     images: widget.product.images,
-                  //     isCanceled: false,
-                  //     name: widget.product.name,
-                  //     isDelivered: false,
-                  //     orderquantity: 1,
-                  //     price: widget.product.price,
-                  //     size: widget.product.size,
-                  //     id: widget.product.name,
-                  //   ));
-                  //   cashonDelivery(context);
-                  // }
                 },
                 title: 'Cost From',
                 totalPrice: widget.serviceModel.price,
@@ -475,159 +395,5 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ),
       ),
     );
-  }
-
-  Future<dynamic> cashonDelivery(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-            scrollable: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            title: const Text(
-              'Booking Successfull',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
-            ),
-            content: Padding(
-              padding: const EdgeInsets.all(7.0),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  //crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgL54f8y2KvkViOnugSECHrjF6P0VazvrhZg&usqp=CAU',
-                      width: 150,
-                      height: 150,
-                    ),
-                    k20height,
-                    const Text(
-                      'For more details,\n check Order Status',
-                      //maxLines: 3,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            actions: [
-              Center(
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.green[900])),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text("OK")),
-              ),
-            ],
-          );
-        });
-  }
-
-  Future<dynamic> addaressAlert(BuildContext context) {
-    return showDialog(
-        // shape: const RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.vertical(
-        //         top: Radius.circular(20))),
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.white,
-            scrollable: true,
-            title: const Text(
-              'Add Address',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'poppinz',
-                  fontWeight: FontWeight.bold),
-            ),
-            content: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Form(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    TextfieldContainer(
-                      controller: localareaController,
-                      hinttext: 'Local Area',
-                      leadingIcon: const Icon(
-                        Icons.not_listed_location_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                    k30height,
-                    TextfieldContainer(
-                      controller: cityController,
-                      hinttext: 'City',
-                      leadingIcon: const Icon(
-                        Icons.not_listed_location_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                    k30height,
-                    TextfieldContainer(
-                      controller: districtController,
-                      hinttext: 'District',
-                      leadingIcon: const Icon(
-                        Icons.not_listed_location_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                    k30height,
-                    TextfieldContainer(
-                      controller: stateController,
-                      hinttext: 'State',
-                      leadingIcon: const Icon(
-                        Icons.not_listed_location_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                    k30height,
-                    TextfieldContainer(
-                      keyboardType: TextInputType.number,
-                      controller: pincodeController,
-                      hinttext: 'Pincode',
-                      leadingIcon: const Icon(
-                        Icons.not_listed_location_rounded,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            actions: [
-              Center(
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.black)),
-                    onPressed: () {
-                      // addAddressFun(
-                      //     addressModel: AddressModel(
-                      //         district: districtController.text,
-                      //         localArea: localareaController.text,
-                      //         id: 'Address',
-                      //         state: stateController.text,
-                      //         pincode: pincodeController.text,
-                      //         city: cityController.text));
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text("Submit")),
-              ),
-            ],
-          );
-        });
   }
 }

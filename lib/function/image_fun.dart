@@ -11,8 +11,8 @@ class Images {
   }
 
   static Future<XFile?> selectimage() async {
-    final XFile = imagePicker.pickImage(source: ImageSource.gallery);
-    return XFile;
+    final xFile = imagePicker.pickImage(source: ImageSource.gallery);
+    return xFile;
   }
 
   static ImagePicker imagePicker = ImagePicker();
@@ -22,10 +22,10 @@ class Images {
     final file = File(image.path);
 
     final ref = FirebaseStorage.instance.ref().child(path);
-    final _uploadTask = ref.putFile(file);
+    final uploadTask = ref.putFile(file);
 
     final snap =
-        await _uploadTask.whenComplete(() => log(image.name.toString()));
+        await uploadTask.whenComplete(() => log(image.name.toString()));
 
     final imageurl = await snap.ref.getDownloadURL();
     log('is returning imageurl-------- $imageurl ');

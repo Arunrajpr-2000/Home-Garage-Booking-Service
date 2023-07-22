@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/common/snackbar.dart';
 import 'package:accent_service_app/function/whatsapp_chat_fun.dart';
@@ -19,7 +17,7 @@ import 'package:url_launcher/url_launcher.dart';
 final currentuser = FirebaseAuth.instance.currentUser!.phoneNumber;
 
 class MenuScreen extends StatefulWidget {
-  MenuScreen({super.key});
+  const MenuScreen({super.key});
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -65,10 +63,10 @@ class _MenuScreenState extends State<MenuScreen> {
           postal = userData['postalcode'];
         });
       } else {
-        print('User document does not exist');
+        // print('User document does not exist');
       }
     } catch (e) {
-      print('Error retrieving user details: $e');
+      // print('Error retrieving user details: $e');
     }
   }
 
@@ -83,14 +81,12 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserDetails();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     getUserDetails();
   }
@@ -106,12 +102,8 @@ class _MenuScreenState extends State<MenuScreen> {
               end: FractionalOffset.bottomCenter,
               colors: <Color>[
                 Color(0xff74d3d9),
-                //  Color.fromARGB(255, 77, 159, 161),
-                // Color(0xff2e2e2e),
-                // Color(0xff2e2e2e),
-                Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                // Colors.black, Colors.black
+                Color(0xff1a1b1f),
+                Color(0xff1a1b1f),
               ]),
         ),
         child: Center(
@@ -197,7 +189,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 // Text('1.0.0')
                               ],
                             ),
-                            content: Text(
+                            content: const Text(
                               'Home Garage !! is designed and developed by\n Accent Next Technologies',
                               style: TextStyle(
                                   fontFamily: "poppinz",
@@ -235,7 +227,7 @@ class _MenuScreenState extends State<MenuScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: NetworkImage(
                                 'https://www.citypng.com/public/uploads/preview/-4160105712099lwwzdy5k.png',
                               ),
@@ -269,28 +261,18 @@ class _MenuScreenState extends State<MenuScreen> {
                     iconData: Icons.share_rounded,
                     title: 'Invite Friends'),
                 k10height,
-
                 MenuTileWidget(
                     onTap: () async {
                       await FirebaseAuth.instance
                           .signOut()
-                          .then((value) => Get.off(IsLogin()));
+                          .then((value) => Get.off(const IsLogin()));
 
+                      // ignore: use_build_context_synchronously
                       Utils.showSnackBar(
                           context: context, text: 'See You again!!');
                     },
                     iconData: Icons.logout_rounded,
                     title: 'Log Out'),
-
-                // Textcontainer(icondata: Icons.person, text: 'User Name'),
-                // k20height,
-                // Textcontainer(icondata: Icons.email, text: 'Email'),
-                // k20height,
-                // Textcontainer(icondata: Icons.call, text: 'Phone Number'),
-                // k20height,
-                // Textcontainer(
-                //     icondata: Icons.date_range_rounded, text: 'Date of Birth'),
-                // k20height,
               ],
             ),
           ),

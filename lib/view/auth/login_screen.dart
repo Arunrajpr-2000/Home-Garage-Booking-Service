@@ -4,23 +4,43 @@ import 'package:accent_service_app/common/snackbar.dart';
 import 'package:accent_service_app/function/addaddress_fun.dart';
 import 'package:accent_service_app/model/profile_model.dart';
 import 'package:accent_service_app/view/auth/widget/auth_button.dart';
-import 'package:accent_service_app/view/home/home_screen.dart';
 import 'package:accent_service_app/view/main_page/main_page.dart';
 import 'package:accent_service_app/view/payment_screen/widget/textfield_container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   // String? phonenumber;
   final _phoneController = TextEditingController();
+
   final _codeController = TextEditingController();
 
   String? verificationId;
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  bool isLoading = false;
+  void handleClick() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 7));
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +51,8 @@ class LoginScreen extends StatelessWidget {
               end: FractionalOffset.bottomCenter,
               colors: <Color>[
                 Color(0xff74d3d9),
-                //  Color.fromARGB(255, 77, 159, 161),
-                // Color(0xff2e2e2e),
-                // Color(0xff2e2e2e),
-                Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                // Colors.black, Colors.black
+                Color(0xff1a1b1f),
+                Color(0xff1a1b1f),
               ]),
         ),
         child: Center(
@@ -61,70 +77,24 @@ class LoginScreen extends StatelessWidget {
                 ),
                 hinttext: 'Enter Phone Number',
               ),
-              // k20height,
-              // ElevatedButton(
-              //   style: ButtonStyle(
-              //       backgroundColor: MaterialStateProperty.all(Colors.amber)),
-              //   onPressed: () async {
-              //     await verifyPhoneNumber(
-              //         phonenumber ?? '+${_phoneController.text}', context);
-              //   },
-              //   child: Text('Verify Phone Number'),
-              // ),
-              // k20height,
-              // TextfieldContainer(
-              //   //obscureText: true,
-              //   controller: _codeController,
-              //   leadingIcon: const Icon(Icons.lock),
-              //   hinttext: 'Enter otp',
-              // ),
               k30height,
-
               AuthbuttonWidget(
-                  title: 'SignIn',
+                  child: isLoading == true
+                      ? const SpinKitWave(color: Colors.black, size: 30.0)
+                      : const Center(
+                          child: Text(
+                            'SignIn',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
                   onTap: () async {
+                    handleClick();
                     await verifyPhoneNumber(
                         '+91${_phoneController.text}', context);
-                    // Get.off(HomeScreen());
-                    // await signInWithPhoneNumber(
-                    //         _codeController.text.trim(), context)
-                    //     .then((value) => Get.off(HomeScreen()));
                   }),
-              // k30height,
-              // GestureDetector(
-              //   //onTap: () => Get.to(ForgotScreen()),
-              //   child: Text(
-              //     'Forgot the password?',
-              //     style: TextStyle(
-              //         fontWeight: FontWeight.w400,
-              //         fontSize: ScreenUtil().setSp(15),
-              //         color: yellowcolor),
-              //   ),
-              // ),
-              // k20height,
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "Don't have an account ? ",
-              //       style: TextStyle(
-              //           fontWeight: FontWeight.w400,
-              //           fontSize: ScreenUtil().setSp(15),
-              //           color: Colors.grey),
-              //     ),
-              //     GestureDetector(
-              //       onTap: () => Get.to(SignUpScreen()),
-              //       child: Text(
-              //         "Sign Up",
-              //         style: TextStyle(
-              //             fontWeight: FontWeight.w400,
-              //             fontSize: ScreenUtil().setSp(15),
-              //             color: yellowcolor),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // k20height
             ],
           ),
         ),
@@ -168,12 +138,8 @@ class LoginScreen extends StatelessWidget {
                     end: FractionalOffset.bottomCenter,
                     colors: <Color>[
                       Color(0xff74d3d9),
-                      //  Color.fromARGB(255, 77, 159, 161),
-                      // Color(0xff2e2e2e),
-                      // Color(0xff2e2e2e),
-                      Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                      // Colors.black, Colors.black
+                      Color(0xff1a1b1f),
+                      Color(0xff1a1b1f),
                     ]),
               ),
               padding: const EdgeInsets.all(20.0),
@@ -192,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 20.0),
                   TextField(
                     cursorColor: Colors.white,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     controller: _codeController,
                     decoration: const InputDecoration(
                       labelStyle: TextStyle(color: Colors.white),
@@ -250,10 +216,9 @@ class LoginScreen extends StatelessWidget {
       );
     };
 
-    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
-        (String verificationId) {
+    codeAutoRetrievalTimeout(String verificationId) {
       this.verificationId = verificationId;
-    };
+    }
 
     await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -271,7 +236,7 @@ class LoginScreen extends StatelessWidget {
           verificationId: verificationId!, smsCode: smsCode);
       await auth.signInWithCredential(credential).then((value) {
         addAddressFun(profileModel: ProfileModel(phonenumber: phoneNumber));
-        Get.off(MainScreen());
+        Get.off(const MainScreen());
       });
       Utils.showSnackBar(context: context, text: 'Otp Verification Success');
 

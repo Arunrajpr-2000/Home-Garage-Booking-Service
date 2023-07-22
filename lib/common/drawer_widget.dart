@@ -1,5 +1,6 @@
 import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/common/snackbar.dart';
+import 'package:accent_service_app/function/whatsapp_chat_fun.dart';
 import 'package:accent_service_app/view/auth/login_screen.dart';
 import 'package:accent_service_app/view/menu_screen/widget/menu_tile_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -66,7 +67,7 @@ class DrawerWidget extends StatelessWidget {
                           // Text('1.0.0')
                         ],
                       ),
-                      content: Text(
+                      content: const Text(
                         'Home Garage !! is designed and developed by\n Accent Next Technologies',
                         style: TextStyle(
                             fontFamily: "poppinz",
@@ -94,20 +95,32 @@ class DrawerWidget extends StatelessWidget {
               iconData: Icons.info_outline_rounded,
               title: 'About'),
           k10height,
-          // MenuTileWidget(
-          //     onTap: () {},
-          //     iconData: Icons.help_outline_rounded,
-          //     title: 'Help Centre'),
-          // k10height,
-          // MenuTileWidget(
-          //     onTap: () {}, iconData: Icons.lock, title: 'Privacy Policy'),
+          MenuTileWidget(
+              onTap: () async {
+                await whatsAppchat(context);
+              },
+              icon: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    image: const DecorationImage(
+                        image: NetworkImage(
+                          'https://www.citypng.com/public/uploads/preview/-4160105712099lwwzdy5k.png',
+                        ),
+                        fit: BoxFit.cover)),
+              ),
+              iconData: Icons.lock,
+              title: 'Chat On Whatsapp'),
           k10height,
           MenuTileWidget(
               onTap: () async {
                 await FirebaseAuth.instance
                     .signOut()
-                    .then((value) => Get.offAll(LoginScreen()));
+                    .then((value) => Get.offAll(const LoginScreen()));
 
+                // ignore: use_build_context_synchronously
                 Utils.showSnackBar(context: context, text: 'Logoutted');
               },
               iconData: Icons.logout_rounded,

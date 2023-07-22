@@ -9,10 +9,11 @@ import 'package:accent_service_app/view/service_details/service_details.dart';
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({
+  const SearchScreen({
     Key? key,
   }) : super(key: key);
   @override
+  // ignore: library_private_types_in_public_api
   _SearchScreenState createState() => _SearchScreenState();
 }
 
@@ -41,27 +42,14 @@ class _SearchScreenState extends State<SearchScreen> {
               end: FractionalOffset.bottomCenter,
               colors: <Color>[
                 Color(0xff74d3d9),
-                //  Color.fromARGB(255, 77, 159, 161),
-                // Color(0xff2e2e2e),
-                // Color(0xff2e2e2e),
-                Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                // Colors.black, Colors.black
+                Color(0xff1a1b1f),
+                Color(0xff1a1b1f),
               ]),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
           child: Column(
             children: [
-              // TextField(
-              //   onChanged: (value) {
-              //     setState(() {
-              //       _searchQuery = value.toUpperCase();
-              //       _performSearch();
-              //     });
-              //   },
-              //   // onSubmitted: (_) => _performSearch(),
-              // ),
               k20height,
               Container(
                 decoration: BoxDecoration(
@@ -86,18 +74,18 @@ class _SearchScreenState extends State<SearchScreen> {
                     suffixIcon: Visibility(
                       visible: _searchController.text.isNotEmpty,
                       child: IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                         onPressed: () => _searchController.clear(),
                       ),
                     ),
                     prefixIcon: IconButton(
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                       onPressed: () {
                         // Perform the search here
                       },
                     ),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color.fromARGB(255, 77, 159, 161),
                       ),
                       borderRadius: BorderRadius.circular(20.0),

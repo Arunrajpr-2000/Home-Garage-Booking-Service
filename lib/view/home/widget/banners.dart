@@ -6,6 +6,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+// ignore: must_be_immutable
 class PageViewWidget extends StatefulWidget {
   PageViewWidget({
     Key? key,
@@ -13,6 +14,7 @@ class PageViewWidget extends StatefulWidget {
   }) : super(key: key);
   bool isneedtext;
   @override
+  // ignore: library_private_types_in_public_api
   _PageViewWidgetState createState() => _PageViewWidgetState();
 }
 
@@ -35,7 +37,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
   }
 
   void startAutoPageChange() {
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       final nextPage = (_currentPage + 1) % bannerImages.length;
       if (_currentPage == bannerImages.length - 1) {
         // Stop the auto-scrolling when the last image is reached
@@ -87,12 +89,12 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                         ),
                       ),
                     )
-                  : SizedBox(
+                  : const SizedBox(
                       height: 1,
                     ),
               k10height,
               SizedBox(
-                height: 150,
+                height: 130,
                 width: double.infinity,
                 child: CarouselSlider.builder(
                   itemCount: bannerImages.length,
@@ -101,7 +103,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                     //carouselController: CarouselController(),
                     scrollDirection: Axis.horizontal,
                     autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 2),
+                    autoPlayInterval: const Duration(seconds: 5),
                     autoPlayCurve: Curves.easeInOut,
                     aspectRatio: MediaQuery.of(context).size.width /
                         MediaQuery.of(context).size.height,
@@ -112,11 +114,15 @@ class _PageViewWidgetState extends State<PageViewWidget> {
                     },
                   ),
                   itemBuilder: (context, index, realIndex) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(bannerImages[index]),
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(bannerImages[index]),
+                          ),
                         ),
                       ),
                     );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:accent_service_app/view/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -5,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print('Handling a background message: ${message.messageId}');
+  log('Handling a background message: ${message.messageId}');
 }
 
 Future<void> main() async {

@@ -1,14 +1,12 @@
 import 'dart:developer';
-
-import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/model/service_model.dart';
-import 'package:accent_service_app/view/home/widget/service_card_widget.dart';
 import 'package:accent_service_app/view/service_details/service_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class InsideCate extends StatelessWidget {
   InsideCate({super.key, required this.cate});
   String cate;
@@ -16,10 +14,11 @@ class InsideCate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff74d3d9),
+        backgroundColor: const Color(0xff74d3d9),
         title: Text(
           cate,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style:
+              const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
@@ -38,7 +37,7 @@ class InsideCate extends StatelessWidget {
         child: StreamBuilder<List<ServiceModel>>(
             stream: FirebaseFirestore.instance
                 .collection('categories')
-                .doc('categories')
+                .doc(cate)
                 .collection(cate)
                 .snapshots()
                 .map((event) => event.docs
@@ -60,11 +59,11 @@ class InsideCate extends StatelessWidget {
                     ),
 
                     itemBuilder: (context, index) {
-                      double percentage =
-                          double.parse(list[index].price) / 100 * 20;
+                      // double percentage =
+                      //     double.parse(list[index].price) / 100 * 20;
                       //   log(percentage.toString());
-                      double percentprice =
-                          double.parse(list[index].price) - percentage;
+                      // double percentprice =
+                      //     double.parse(list[index].price) - percentage;
 
                       //log(percentprice.toString());
                       return GestureDetector(
@@ -86,18 +85,12 @@ class InsideCate extends StatelessWidget {
                           child: Stack(
                             children: [
                               Container(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       top: 15, left: 10, right: 10),
                                   height: 200,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      // image: DecorationImage(
-                                      //   image: NetworkImage(
-                                      //     list[index].backgroundImg,
-                                      //   ),
-                                      //   fit: BoxFit.cover,
-                                      // ),
                                       color: Colors.black87),
                                   child: Column(
                                     children: [
@@ -113,12 +106,11 @@ class InsideCate extends StatelessWidget {
                                         ),
                                       ),
                                       Container(
-                                        //padding: const EdgeInsets.only(bottom: 5, left: 5),
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           list[index].specificservicename,
                                           maxLines: 2,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontFamily: 'poppinz',
                                               overflow: TextOverflow.ellipsis,
                                               color: Colors.white,
@@ -126,38 +118,12 @@ class InsideCate extends StatelessWidget {
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      // k10height,
-                                      // Row(
-                                      //   mainAxisSize: MainAxisSize.min,
-                                      //   children: [
-                                      // Text(
-                                      //   "From ₹ 250",
-                                      //   //  ${percentprice.toStringAsFixed(2)}",
-                                      //   style: TextStyle(
-                                      //       fontFamily: 'poppinz',
-                                      //       overflow: TextOverflow.ellipsis,
-                                      //       color: Colors.white,
-                                      //       fontSize: 15,
-                                      //       fontWeight: FontWeight.bold),
-                                      // ),
-                                      //     // Text(
-                                      //     //   " incl. GST",
-                                      //     //   style: TextStyle(
-                                      //     //       fontFamily: 'poppinz',
-                                      //     //       overflow: TextOverflow.ellipsis,
-                                      //     //       color: Colors.grey,
-                                      //     //       fontSize: 12,
-                                      //     //       fontWeight: FontWeight.bold),
-                                      //     // ),
-                                      //   ],
-                                      // ),
-                                      //k10height,
                                       Container(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
                                           "From ₹ ${list[index].price}",
                                           //  ${percentprice.toStringAsFixed(2)}",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontFamily: 'poppinz',
                                               overflow: TextOverflow.ellipsis,
                                               color: Colors.white,
@@ -171,12 +137,13 @@ class InsideCate extends StatelessWidget {
                                   top: 0,
                                   left: 2,
                                   child: CircleAvatar(
-                                    child: Text(
-                                      '${list[index].discount}%',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
                                     backgroundColor: Colors.red,
                                     radius: 20,
+                                    child: Text(
+                                      '${list[index].discount}%',
+                                      style:
+                                          const TextStyle(color: Colors.white),
+                                    ),
                                   ))
                             ],
                           ));

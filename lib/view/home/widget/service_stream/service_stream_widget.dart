@@ -1,11 +1,8 @@
-import 'package:accent_service_app/common/const.dart';
 import 'package:accent_service_app/model/service_model.dart';
 import 'package:accent_service_app/view/home/widget/service_card_widget.dart';
-import 'package:accent_service_app/view/service_details/service_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
 
 class ServiceStream extends StatelessWidget {
   const ServiceStream({super.key});
@@ -15,7 +12,7 @@ class ServiceStream extends StatelessWidget {
     return StreamBuilder<List<ServiceModel>>(
         stream: FirebaseFirestore.instance
             .collection('categories')
-            .doc('categories')
+            .doc('Service')
             .collection('Service')
             .snapshots()
             .map((event) => event.docs
@@ -25,7 +22,8 @@ class ServiceStream extends StatelessWidget {
           if (snapshot.hasData) {
             List<ServiceModel> servicelist = snapshot.data!;
 
-            return serviceCardWidget(
+            return ServiceCardWidget(
+              name: 'Service',
               list: servicelist,
               onTap: () {},
             );

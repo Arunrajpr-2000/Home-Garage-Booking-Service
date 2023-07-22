@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MenuTileWidget extends StatelessWidget {
-  MenuTileWidget(
+  const MenuTileWidget(
       {super.key,
       required this.iconData,
       required this.title,
       this.icon,
       required this.onTap});
-  String title;
-  IconData iconData;
-  Widget? icon;
-  void Function()? onTap;
+  final String title;
+  final IconData iconData;
+  final Widget? icon;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return ListTile(

@@ -36,9 +36,7 @@ class Policydialog extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            child: Text(
-              'Ok',
-            ))
+            child: const Text('Ok'))
       ]),
     );
   }

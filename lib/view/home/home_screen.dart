@@ -3,6 +3,7 @@ import 'package:accent_service_app/view/home/banner2.dart';
 import 'package:accent_service_app/view/home/widget/banners.dart';
 import 'package:accent_service_app/view/home/widget/category_widget.dart';
 import 'package:accent_service_app/view/home/widget/cleaning_stream/cleaning_stream_widget.dart';
+import 'package:accent_service_app/view/home/widget/other_service_stream/other_service.dart';
 import 'package:accent_service_app/view/home/widget/seachbutton.dart';
 import 'package:accent_service_app/view/home/widget/service_stream/service_stream_widget.dart';
 import 'package:accent_service_app/view/home/widget/washing_stream/washing_stream_widget.dart';
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SearchButton(),
+          const SearchButton(),
           PageViewWidget(isneedtext: true),
           servicetitle('Categories'),
           k10height,
@@ -32,9 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 210, child: CleaningStream()),
           servicetitle('Services'),
           const SizedBox(height: 210, child: ServiceStream()),
-          PageViewWidget2(),
+          const PageViewWidget2(),
           servicetitle('Washing Services'),
           const SizedBox(height: 210, child: WashingStream()),
+          //servicetitle('Other Service'),
+          // OtherServiceStream(),
+          const SizedBox(height: 400, child: OtherServiceStream()),
         ],
       ),
     );
@@ -42,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget servicetitle(String text) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15, top: 10),
+      padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
       child: Text(
         text,
         style: const TextStyle(

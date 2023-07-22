@@ -2,6 +2,7 @@ import 'package:accent_service_app/model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
+// ignore: must_be_immutable
 class TimelineTileDemo extends StatelessWidget {
   TimelineTileDemo({Key? key, required this.orderModel}) : super(key: key);
 
@@ -14,12 +15,6 @@ class TimelineTileDemo extends StatelessWidget {
     'Finished',
     'Admin Approved'
   ];
-  // List<String> statusSub = [
-  //   'Waiting for confirm',
-  //   'Accepted your booking, wait for your worker',
-  //   'Work in Progress',
-  //   'Work Finished'
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +22,6 @@ class TimelineTileDemo extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (context, index) {
         bool isCompleted = orderModel.isDelivered;
-        // bool ispending = orderModel.ispending;
-        // bool isaccept = orderModel.isaccepted;
-        // bool istarted = orderModel.isworkstarted;
 
         switch (index) {
           case 0:
@@ -62,7 +54,6 @@ class TimelineTileDemo extends StatelessWidget {
           indicatorStyle: IndicatorStyle(
             width: 20,
             color: isCompleted ? Colors.green : Colors.white,
-            // padding: EdgeInsets.all(6),
           ),
           endChild: Container(
             constraints: const BoxConstraints(
@@ -70,10 +61,6 @@ class TimelineTileDemo extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: Colors.transparent,
-              // border: Border.all(
-              //   color: isCompleted ? Colors.green : Colors.white,
-              //   width: 2,
-              // ),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Padding(
@@ -82,7 +69,7 @@ class TimelineTileDemo extends StatelessWidget {
                 child: Text(
                   status[index],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

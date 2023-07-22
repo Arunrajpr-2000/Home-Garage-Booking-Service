@@ -10,6 +10,7 @@ import 'package:accent_service_app/view/payment_screen/widget/textfield_containe
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({super.key, required this.profileModel});
   ProfileModel profileModel;
@@ -32,19 +33,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _usernameController =
+    final usernameController =
         TextEditingController(text: '${widget.profileModel.username}');
-    final _emailController =
+    final emailController =
         TextEditingController(text: '${widget.profileModel.email}');
-    final _cityController =
+    final cityController =
         TextEditingController(text: '${widget.profileModel.cityordistrict}');
-    final _nearbyController =
+    final nearbyController =
         TextEditingController(text: '${widget.profileModel.nearby}');
-    final _stateController =
+    final stateController =
         TextEditingController(text: '${widget.profileModel.state}');
-    final _streetController =
+    final streetController =
         TextEditingController(text: '${widget.profileModel.street}');
-    final _postalController =
+    final postalController =
         TextEditingController(text: '${widget.profileModel.postalcode}');
 
     return Scaffold(
@@ -93,11 +94,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           });
                         },
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.white,
                           ),
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Icon(
                             Icons.add_a_photo_rounded,
                             size: 23,
@@ -110,46 +111,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 k20height,
                 TextfieldContainer(
-                  controller: _usernameController,
-                  leadingIcon: Icon(Icons.person, color: Colors.white),
+                  controller: usernameController,
+                  leadingIcon: const Icon(Icons.person, color: Colors.white),
                   hinttext: 'Enter UserName',
                 ),
                 k20height,
                 TextfieldContainer(
                   keyboardType: TextInputType.emailAddress,
-                  controller: _emailController,
-                  leadingIcon: Icon(Icons.email, color: Colors.white),
+                  controller: emailController,
+                  leadingIcon: const Icon(Icons.email, color: Colors.white),
                   hinttext: 'Enter Email',
                 ),
                 k20height,
                 TextfieldContainer(
-                  controller: _streetController,
-                  leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  controller: streetController,
+                  leadingIcon:
+                      const Icon(Icons.location_pin, color: Colors.white),
                   hinttext: 'Enter Street',
                 ),
                 k20height,
                 TextfieldContainer(
-                  controller: _cityController,
-                  leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  controller: cityController,
+                  leadingIcon:
+                      const Icon(Icons.location_pin, color: Colors.white),
                   hinttext: 'Enter City/District',
                 ),
                 k20height,
                 TextfieldContainer(
-                  controller: _stateController,
-                  leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  controller: stateController,
+                  leadingIcon:
+                      const Icon(Icons.location_pin, color: Colors.white),
                   hinttext: 'Enter state',
                 ),
                 k20height,
                 TextfieldContainer(
                   keyboardType: TextInputType.phone,
-                  controller: _postalController,
-                  leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  controller: postalController,
+                  leadingIcon:
+                      const Icon(Icons.location_pin, color: Colors.white),
                   hinttext: 'Enter Postal code',
                 ),
                 k20height,
                 TextfieldContainer(
-                  controller: _nearbyController,
-                  leadingIcon: Icon(Icons.location_pin, color: Colors.white),
+                  controller: nearbyController,
+                  leadingIcon:
+                      const Icon(Icons.location_pin, color: Colors.white),
                   hinttext: 'Enter Nearby location',
                 ),
                 k30height,
@@ -164,13 +170,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         onPressed: () {
-                          if (_usernameController.text.isEmpty ||
-                              _emailController.text.isEmpty ||
-                              _streetController.text.isEmpty ||
-                              _cityController.text.isEmpty ||
-                              _stateController.text.isEmpty ||
-                              _postalController.text.isEmpty ||
-                              _nearbyController.text.isEmpty) {
+                          if (usernameController.text.isEmpty ||
+                              emailController.text.isEmpty ||
+                              streetController.text.isEmpty ||
+                              cityController.text.isEmpty ||
+                              stateController.text.isEmpty ||
+                              postalController.text.isEmpty ||
+                              nearbyController.text.isEmpty) {
                             //
                             Utils.showSnackBar(
                                 context: context,
@@ -179,18 +185,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             addAddressFun(
                                 profileModel: ProfileModel(
                                     phonenumber: currentuser.toString(),
-                                    cityordistrict: _cityController.text,
-                                    email: _emailController.text,
-                                    nearby: _nearbyController.text,
-                                    postalcode: _postalController.text,
-                                    state: _stateController.text,
-                                    street: _streetController.text,
-                                    username: _usernameController.text,
+                                    cityordistrict: cityController.text,
+                                    email: emailController.text,
+                                    nearby: nearbyController.text,
+                                    postalcode: postalController.text,
+                                    state: stateController.text,
+                                    street: streetController.text,
+                                    username: usernameController.text,
                                     image: imgurl));
                             Get.back();
                           }
                         },
-                        child: Text(
+                        child: const Text(
                           'Update Profile',
                           style: TextStyle(
                             color: Colors.black,

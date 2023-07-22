@@ -13,8 +13,7 @@ class CategoryWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: StreamBuilder<QuerySnapshot>(
-        stream:
-            FirebaseFirestore.instance.collection('categorylist').snapshots(),
+        stream: FirebaseFirestore.instance.collection('categories').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.separated(
@@ -29,20 +28,20 @@ class CategoryWidget extends StatelessWidget {
                     Get.to(InsideCate(cate: documentsnampshot['name']));
                   },
                   child: Container(
-                    width: 70,
+                    width: 100,
                     height: 70,
                     decoration: BoxDecoration(
-                      color: const Color(0xff1a1b1f),
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          // offset:
-                          //     const Offset(0, 3), // Shadow position (x, y)
-                        ),
-                      ],
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.grey.withOpacity(0.5),
+                      //     spreadRadius: 2,
+                      //     blurRadius: 5,
+                      //     // offset:
+                      //     //     const Offset(0, 3), // Shadow position (x, y)
+                      //   ),
+                      // ],
                     ),
                     child: Center(
                       child: Text(
@@ -52,6 +51,8 @@ class CategoryWidget extends StatelessWidget {
                           fontSize: 15,
                           // fontWeight: FontWeight.bold,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),

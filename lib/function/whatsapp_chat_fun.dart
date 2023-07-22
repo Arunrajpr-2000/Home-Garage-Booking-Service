@@ -7,7 +7,9 @@ whatsAppchat(context) async {
   String url =
       'https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}';
 
+  // ignore: deprecated_member_use
   if (await canLaunch(url)) {
+    // ignore: deprecated_member_use
     await launch(url);
   } else {
     Utils.showSnackBar(context: context, text: 'Coud Not launch Whatsapp');

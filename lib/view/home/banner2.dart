@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PageViewWidget2 extends StatefulWidget {
-  PageViewWidget2({
+  const PageViewWidget2({
     Key? key,
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PageViewWidget2State createState() => _PageViewWidget2State();
 }
 
@@ -35,7 +36,7 @@ class _PageViewWidget2State extends State<PageViewWidget2> {
   }
 
   void startAutoPageChange() {
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       final nextPage = (_currentPage + 1) % bannerImages.length;
       if (_currentPage == bannerImages.length - 1) {
         // Stop the auto-scrolling when the last image is reached
@@ -76,7 +77,7 @@ class _PageViewWidget2State extends State<PageViewWidget2> {
             children: [
               k20height,
               SizedBox(
-                height: 150,
+                height: 130,
                 width: double.infinity,
                 child: CarouselSlider.builder(
                   itemCount: bannerImages.length,
@@ -85,7 +86,7 @@ class _PageViewWidget2State extends State<PageViewWidget2> {
                     //carouselController: CarouselController(),
                     scrollDirection: Axis.horizontal,
                     autoPlay: true,
-                    autoPlayInterval: const Duration(seconds: 2),
+                    autoPlayInterval: const Duration(seconds: 5),
                     autoPlayCurve: Curves.easeInOut,
                     aspectRatio: MediaQuery.of(context).size.width /
                         MediaQuery.of(context).size.height,
@@ -96,11 +97,15 @@ class _PageViewWidget2State extends State<PageViewWidget2> {
                     },
                   ),
                   itemBuilder: (context, index, realIndex) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(bannerImages[index]),
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(bannerImages[index]),
+                          ),
                         ),
                       ),
                     );

@@ -26,7 +26,7 @@ class NotificationScreen extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
             )),
@@ -38,12 +38,8 @@ class NotificationScreen extends StatelessWidget {
               end: FractionalOffset.bottomCenter,
               colors: <Color>[
                 Color(0xff74d3d9),
-                //  Color.fromARGB(255, 77, 159, 161),
-                // Color(0xff2e2e2e),
-                // Color(0xff2e2e2e),
-                Color(0xff1a1b1f), Color(0xff1a1b1f),
-
-                // Colors.black, Colors.black
+                Color(0xff1a1b1f),
+                Color(0xff1a1b1f),
               ]),
         ),
         child: Padding(
@@ -70,7 +66,7 @@ class NotificationScreen extends StatelessWidget {
                         tileColor: Colors.white,
                         title: Text(
                           data['title'],
-                          style:const TextStyle(
+                          style: const TextStyle(
                             fontFamily: "poppinz",
                             color: Colors.white,
                             fontSize: 18,
@@ -79,7 +75,7 @@ class NotificationScreen extends StatelessWidget {
                         ),
                         subtitle: Text(
                           data['sub'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "poppinz",
                             color: Colors.white,
                             fontSize: 18,
@@ -98,8 +94,8 @@ class NotificationScreen extends StatelessWidget {
                   ),
                 );
               } else {
-                return Center(
-                  child: const Text(
+                return const Center(
+                  child: Text(
                     'No Data',
                     style: TextStyle(color: Colors.white),
                   ),

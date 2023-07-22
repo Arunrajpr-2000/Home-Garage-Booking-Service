@@ -26,9 +26,9 @@ class IsLogin extends StatelessWidget {
               ),
             );
           } else if (snapshot.hasData) {
-            return MainScreen();
+            return const MainScreen();
           } else {
-            return LoginScreen();
+            return const LoginScreen();
           }
         });
   }

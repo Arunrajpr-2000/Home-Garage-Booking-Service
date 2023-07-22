@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:accent_service_app/common/const.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TotalPriceBottomWidget extends StatelessWidget {
   TotalPriceBottomWidget(
       {Key? key,
@@ -36,14 +35,14 @@ class TotalPriceBottomWidget extends StatelessWidget {
             children: [
               Text(
                 '$title',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
               ),
               Text(
                 '₹ $totalPrice',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold),

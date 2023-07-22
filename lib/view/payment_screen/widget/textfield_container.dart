@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TextfieldContainer extends StatelessWidget {
   TextfieldContainer(
       {Key? key,
@@ -63,7 +64,7 @@ class TextfieldContainer extends StatelessWidget {
             errorText: errorText,
             border: InputBorder.none,
             hintText: hinttext,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontSize: 14,
               color: Colors.white38,
             ),
